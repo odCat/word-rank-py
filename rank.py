@@ -1,3 +1,4 @@
+#!python
 
 #   Copyright 2021 Mihai Gătejescu
 # 
@@ -14,4 +15,6 @@
 #   limitations under the License.
 
 
-#!python
+file_name = 'sample.txt'
+with open(file_name, 'r', encoding='utf8') as input_file:
+    data = input_file.read()
