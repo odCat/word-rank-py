@@ -33,5 +33,13 @@ class RankTests(unittest.TestCase):
                     'televizor\ntelevizor\nși\n')
         self.assertEqual(rankpy.remove_punctuation(data), expected)
 
+    def test_text_to_list(self):
+        data = rankpy.read_from_file('sample.txt')
+        data = rankpy.text_to_list(data)
+        expected = ['casă', 'masă', 'carte', 'să-mi', 'Linie', 'de',
+                    'dialog', 'casă', 'masă', 'casă', 'parte', 'pasă',
+                    'parte', 'televizor', 'televizor', 'și']
+        self.assertEqual(data, expected)
+
 if __name__ == '__main__':
     unittest.main()

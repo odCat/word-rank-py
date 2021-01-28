@@ -14,6 +14,7 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
+from re import sub
 
 def read_from_file(file_name):
     with open(file_name, 'r', encoding='utf8') as input_file:
@@ -30,6 +31,13 @@ def remove_punctuation(text):
             text = text.replace(c, '')
 
     return text
+
+def text_to_list(text):
+    text = remove_punctuation(text)
+    text = text.replace('\n', ' ')
+    text = text.strip()
+    text = sub(' +', ' ', text)
+    return text.split(' ')
 
 #TODO
 ## Write tests
