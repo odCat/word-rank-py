@@ -18,3 +18,13 @@
 file_name = 'sample.txt'
 with open(file_name, 'r', encoding='utf8') as input_file:
     data = input_file.read()
+
+#TODO
+## Write tests
+## Remove punctuation:
+     # (ch != '.' && ch != ',' && ch != ':' && ch != ';'    \
+     # && ch != '?' && ch != '!' && ch != '(' && ch != ')' \
+     # && ch != '"' && ch != '\'')
+     # remember to add Romanian quotes
+## Create and update dictionary
+## Input file from command line
