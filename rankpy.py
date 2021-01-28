@@ -15,9 +15,15 @@
 #   limitations under the License.
 
 
-file_name = 'sample.txt'
-with open(file_name, 'r', encoding='utf8') as input_file:
-    data = input_file.read()
+def read_from_file(file_name):
+    with open(file_name, 'r', encoding='utf8') as input_file:
+        return input_file.read()
+
+def remove_punctuation(text):
+    text = (' casă masă  carte\nsă-mi\n Linie de dialog' +
+            '\ncasă  masă\ncasă parte\n\npasă parte\n\n'
+            'televizor\n\"televizor\"\nși\n') 
+    return text
 
 #TODO
 ## Write tests
