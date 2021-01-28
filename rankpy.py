@@ -20,17 +20,18 @@ def read_from_file(file_name):
         return input_file.read()
 
 def remove_punctuation(text):
-    text = (' casă masă  carte\nsă-mi\n Linie de dialog' +
-            '\ncasă  masă\ncasă parte\n\npasă parte\n\n'
-            'televizor\n\"televizor\"\nși\n') 
+    punctuation = ',.?!\"\'‘’“”()[]{}<>\\/;:_+@#$%^&*~`=|'
+            
+    text = text.replace('-\n', '')
+    text = text.replace('- ', ' ')
+    text = text.replace(' -', ' ')
+    for c in text:
+        if c in punctuation:
+            text = text.replace(c, '')
+
     return text
 
 #TODO
 ## Write tests
-## Remove punctuation:
-     # (ch != '.' && ch != ',' && ch != ':' && ch != ';'    \
-     # && ch != '?' && ch != '!' && ch != '(' && ch != ')' \
-     # && ch != '"' && ch != '\'')
-     # remember to add Romanian quotes
 ## Create and update dictionary
 ## Input file from command line

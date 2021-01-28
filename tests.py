@@ -30,7 +30,7 @@ class RankTests(unittest.TestCase):
         data = rankpy.read_from_file('sample.txt')
         expected = (' casă masă  carte\nsă-mi\n Linie de dialog' +
                     '\ncasă  masă\ncasă parte\n\npasă parte\n\n'
-                    'televizor\n\"televizor\"\nși\n')
+                    'televizor\ntelevizor\nși\n')
         self.assertEqual(rankpy.remove_punctuation(data), expected)
 
 if __name__ == '__main__':
