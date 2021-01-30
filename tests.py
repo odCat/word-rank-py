@@ -41,6 +41,20 @@ class RankTests(unittest.TestCase):
                     'parte', 'televizor', 'televizor', 'și']
         self.assertEqual(data, expected)
 
+    def test_sort_dictionary(self):
+        data = {
+                "key1": 1,
+                "key2": 4,
+                "key3": 2
+                }
+        data = rankpy.sort_dictionary(data)
+        expected = {
+                "key2": 4,
+                "key3": 2,
+                "key1": 1
+                }
+        self.assertEqual(data.keys(), expected.keys())
+
     def test_word_frequency(self):
         data = rankpy.read_from_file('sample.txt')
         data = rankpy.text_to_list(data)

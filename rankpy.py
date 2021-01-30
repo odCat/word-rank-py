@@ -39,6 +39,15 @@ def text_to_list(text):
     text = sub(' +', ' ', text)
     return text.split(' ')
 
+def sort_dictionary(dictionary):
+    values = sorted(dictionary.values(), reverse = True)
+    sorted_dict = {}
+    for i in values:
+        for j in dictionary.keys():
+            if dictionary[j] == i:
+                sorted_dict[j] = i
+    return sorted_dict
+
 def word_frequency(data):
     result = {}
     for word in data:
@@ -46,7 +55,7 @@ def word_frequency(data):
             result[word] += 1
         except KeyError:
             result[word] = 1
-    return result
+    return sort_dictionary(result)
 
 #TODO
 ## Write tests
