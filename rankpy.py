@@ -61,3 +61,4 @@ def word_frequency(data):
 ## Write tests
 ## Create and update dictionary
 ## Input file from command line
+## Check for file exception
