@@ -39,6 +39,15 @@ def text_to_list(text):
     text = sub(' +', ' ', text)
     return text.split(' ')
 
+def word_frequency(data):
+    result = {}
+    for word in data:
+        try:
+            result[word] += 1
+        except KeyError:
+            result[word] = 1
+    return result
+
 #TODO
 ## Write tests
 ## Create and update dictionary

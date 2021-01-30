@@ -41,5 +41,24 @@ class RankTests(unittest.TestCase):
                     'parte', 'televizor', 'televizor', 'și']
         self.assertEqual(data, expected)
 
+    def test_word_frequency(self):
+        data = rankpy.read_from_file('sample.txt')
+        data = rankpy.text_to_list(data)
+        data = rankpy.word_frequency(data)
+        expected = {
+                "casă": 3,
+                "masă": 2,
+                "carte": 1,
+                "să-mi": 1,
+                "Linie": 1,
+                "de": 1,
+                "dialog": 1,
+                "pasă": 1,
+                "parte": 2,
+                "televizor": 2,
+                "și": 1
+                }
+        self.assertEqual(data, expected)
+
 if __name__ == '__main__':
     unittest.main()
