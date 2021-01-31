@@ -57,6 +57,13 @@ def word_frequency(data):
             result[word] = 1
     return sort_dictionary(result)
 
+if __name__ == '__main__':
+    data = read_from_file('sample.txt')
+    data = remove_punctuation(data)
+    data = text_to_list(data)
+    data = word_frequency(data)
+    print(data)
+
 #TODO
 ## Write tests
 ## Create and update dictionary
