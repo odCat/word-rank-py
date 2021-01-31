@@ -14,11 +14,19 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
+from sys import exit as sysexit
+from sys import argv
 from re import sub
 
 def read_from_file(file_name):
-    with open(file_name, 'r', encoding='utf8') as input_file:
-        return input_file.read()
+    try:
+        input_file =  open(file_name, 'r', encoding='utf8')
+        data = input_file.read()
+        input_file.close()
+        return data
+    except FileNotFoundError:
+        print('File not found')
+        sysexit()
 
 def remove_punctuation(text):
     punctuation = ',.?!\"\'‘’“”()[]{}<>\\/;:_+@#$%^&*~`=|'
@@ -57,12 +65,20 @@ def word_frequency(data):
             result[word] = 1
     return sort_dictionary(result)
 
+def print_dictionary(dictionary):
+    for i in dictionary:
+        print('{0}: {1}'.format(i, dictionary[i]))
+
 if __name__ == '__main__':
-    data = read_from_file('sample.txt')
+    if len(argv) > 1:
+        file_name = argv[1]
+    else:
+        file_name = 'sample.txt'
+    data = read_from_file(file_name)
     data = remove_punctuation(data)
     data = text_to_list(data)
     data = word_frequency(data)
-    print(data)
+    print_dictionary(data)
 
 #TODO
 ## Write tests
