@@ -74,5 +74,14 @@ class RankTests(unittest.TestCase):
                 }
         self.assertEqual(data, expected)
 
+    def test_make_printable(sefl):
+        data = {
+                "key2": 4,
+                "key3": 2,
+                "key1": 1
+                }
+        data = rankpy.make_printable(data)
+        expected = ('key2: 4\nkey3: 2\nkey1: 1\n')
+
 if __name__ == '__main__':
     unittest.main()

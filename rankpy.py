@@ -65,9 +65,11 @@ def word_frequency(data):
             result[word] = 1
     return sort_dictionary(result)
 
-def print_dictionary(dictionary):
-    for i in dictionary:
-        print('{0}: {1}'.format(i, dictionary[i]))
+def make_printable(dictionary):
+    result = ''
+    for i in dictionary.keys():
+        result += i + ': ' + str(dictionary[i]) + '\n'
+    return result
 
 if __name__ == '__main__':
     if len(argv) > 1:
@@ -78,10 +80,16 @@ if __name__ == '__main__':
     data = remove_punctuation(data)
     data = text_to_list(data)
     data = word_frequency(data)
-    print_dictionary(data)
+    data = make_printable(data)
+    if len(argv) == 3:
+        with open(argv[2], 'w', encoding = 'utf-8') as out_file:
+            out_file.write(data)
+    else:
+        print(data)
 
 #TODO
 ## Write tests
 ## Create and update dictionary
 ## Input file from command line
 ## Check for file exception
+## When redirecting the output to a file, it gets and unicode error
