@@ -88,8 +88,5 @@ if __name__ == '__main__':
         print(data)
 
 #TODO
-## Write tests
-## Create and update dictionary
-## Input file from command line
-## Check for file exception
+## Print to output in chuncks
 ## When redirecting the output to a file, it gets and unicode error
