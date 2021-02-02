@@ -85,7 +85,8 @@ if __name__ == '__main__':
         with open(argv[2], 'w', encoding = 'utf-8') as out_file:
             out_file.write(data)
     else:
-        print(data)
+        utf8stdout = open(1, 'w', encoding='utf-8', closefd=False)
+        print(data, file = utf8stdout)
 
 #TODO
 ## Print to output in chuncks
