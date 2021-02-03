@@ -71,6 +71,10 @@ def make_printable(dictionary):
         result += i + ': ' + str(dictionary[i]) + '\n'
     return result
 
+def print_to_file(file_name, data):
+    with open(file_name, 'w', encoding = 'utf-8') as out_file:
+        out_file.write(data)
+
 if __name__ == '__main__':
     if len(argv) > 1:
         file_name = argv[1]
@@ -82,8 +86,7 @@ if __name__ == '__main__':
     data = word_frequency(data)
     data = make_printable(data)
     if len(argv) == 3:
-        with open(argv[2], 'w', encoding = 'utf-8') as out_file:
-            out_file.write(data)
+        print_to_file(argv[2], data)
     else:
         utf8stdout = open(1, 'w', encoding='utf-8', closefd=False)
         print(data, file = utf8stdout)
