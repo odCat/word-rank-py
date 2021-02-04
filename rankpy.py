@@ -75,6 +75,10 @@ def print_to_file(file_name, data):
     with open(file_name, 'w', encoding = 'utf-8') as out_file:
         out_file.write(data)
 
+def printutf8(data):
+    utf8stdout = open(1, 'w', encoding='utf-8', closefd=False)
+    print(data, file = utf8stdout)
+
 if __name__ == '__main__':
     if len(argv) > 1:
         file_name = argv[1]
@@ -88,8 +92,7 @@ if __name__ == '__main__':
     if len(argv) == 3:
         print_to_file(argv[2], data)
     else:
-        utf8stdout = open(1, 'w', encoding='utf-8', closefd=False)
-        print(data, file = utf8stdout)
+        printutf8(data)
 
 #TODO
 ## Print to output in chuncks
