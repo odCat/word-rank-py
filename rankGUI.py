@@ -16,14 +16,25 @@
 
 import tkinter as tk
 
-class App(tk.Frame):
-    def __init__(self, master=None):
-        super().__init__(master)
-        self.pack()
-
 root = tk.Tk()
 root.geometry('640x480')
+root.title('Word Rank Py')
 
-myapp = App(root)
-myapp.master.title('Word Rank Py')
-myapp.mainloop()
+frame1 = tk.Frame(root)
+frame1.pack(side = 'right')
+button = tk.Button(frame1, text = 'Open Text File')
+button.pack(side = 'right')
+
+frame2 = tk.Frame(root)
+frame2.pack(side = 'left', fill = 'both', expand = True)
+
+scrollbar = tk.Scrollbar(frame2)
+scrollbar.pack(side = 'right', fill = 'y')
+
+text = tk.Text(frame2, wrap = 'word', yscrollcommand = scrollbar.set)
+text.pack(side = 'left', fill = 'both', expand = True)
+
+scrollbar['command'] = text.yview
+
+
+root.mainloop()
