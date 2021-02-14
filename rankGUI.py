@@ -22,8 +22,10 @@ root.title('Word Rank Py')
 
 command_frame = tk.Frame(root)
 command_frame.pack(side = 'right')
-button = tk.Button(command_frame, text = 'Open Text File')
-button.pack(side = 'right')
+button1 = tk.Button(command_frame, text = 'Open Text File')
+button1.pack(expand = tk.YES)
+button2 = tk.Button(command_frame, text = 'Get Text')
+button2.pack(expand = tk.YES)
 
 text_frame = tk.Frame(root)
 text_frame.pack(side = 'left', fill = 'both', expand = True)
@@ -32,5 +34,7 @@ scrollbar.pack(side = 'right', fill = 'y')
 text = tk.Text(text_frame, wrap = 'word', yscrollcommand = scrollbar.set)
 text.pack(side = 'left', fill = 'both', expand = True)
 scrollbar['command'] = text.yview
+
+button2['command'] = (lambda: print(text.get(1.0, tk.END)))
 
 root.mainloop()
