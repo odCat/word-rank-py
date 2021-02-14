@@ -20,21 +20,17 @@ root = tk.Tk()
 root.geometry('640x480')
 root.title('Word Rank Py')
 
-frame1 = tk.Frame(root)
-frame1.pack(side = 'right')
-button = tk.Button(frame1, text = 'Open Text File')
+command_frame = tk.Frame(root)
+command_frame.pack(side = 'right')
+button = tk.Button(command_frame, text = 'Open Text File')
 button.pack(side = 'right')
 
-frame2 = tk.Frame(root)
-frame2.pack(side = 'left', fill = 'both', expand = True)
-
-scrollbar = tk.Scrollbar(frame2)
+text_frame = tk.Frame(root)
+text_frame.pack(side = 'left', fill = 'both', expand = True)
+scrollbar = tk.Scrollbar(text_frame)
 scrollbar.pack(side = 'right', fill = 'y')
-
-text = tk.Text(frame2, wrap = 'word', yscrollcommand = scrollbar.set)
+text = tk.Text(text_frame, wrap = 'word', yscrollcommand = scrollbar.set)
 text.pack(side = 'left', fill = 'both', expand = True)
-
 scrollbar['command'] = text.yview
-
 
 root.mainloop()
