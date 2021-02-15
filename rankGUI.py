@@ -17,8 +17,12 @@
 import tkinter as tk
 
 root = tk.Tk()
-root.geometry('640x480')
 root.title('Word Rank Py')
+root.geometry('640x480')
+
+def setInputText(text):
+    text_input.delete(1.0, tk.END)
+    text_input.insert(1.0, text)
 
 command_frame = tk.Frame(root)
 command_frame.pack(side = 'right')
@@ -26,15 +30,19 @@ button1 = tk.Button(command_frame, text = 'Open Text File')
 button1.pack(expand = tk.YES)
 button2 = tk.Button(command_frame, text = 'Get Text')
 button2.pack(expand = tk.YES)
+button3 = tk.Button(command_frame, text = 'Set Text')
+button3.pack(expand = tk.YES)
 
 text_frame = tk.Frame(root)
 text_frame.pack(side = 'left', fill = 'both', expand = True)
 scrollbar = tk.Scrollbar(text_frame)
 scrollbar.pack(side = 'right', fill = 'y')
-text = tk.Text(text_frame, wrap = 'word', yscrollcommand = scrollbar.set)
-text.pack(side = 'left', fill = 'both', expand = True)
-scrollbar['command'] = text.yview
+text_input = tk.Text(text_frame, wrap = 'word',
+        yscrollcommand = scrollbar.set)
+text_input.pack(side = 'left', fill = 'both', expand = True)
+scrollbar['command'] = text_input.yview
 
-button2['command'] = (lambda: print(text.get(1.0, tk.END)))
+button2['command'] = (lambda: print(text_input.get(1.0, tk.END)))
+button3['command'] = (lambda: setInputText('new ătext'))
 
 root.mainloop()
