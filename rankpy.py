@@ -49,12 +49,12 @@ def text_to_list(text):
 
 def sort_dictionary(dictionary):
     values = sorted(dictionary.values(), reverse = True)
-    sorted_dict = {}
+    result = {}
     for i in values:
         for j in dictionary.keys():
             if dictionary[j] == i:
-                sorted_dict[j] = i
-    return sorted_dict
+                result[j] = i
+    return result
 
 def word_frequency(data):
     result = {}
