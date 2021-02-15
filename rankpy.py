@@ -21,9 +21,9 @@ from re import sub
 def read_from_file(file_name):
     try:
         input_file =  open(file_name, 'r', encoding='utf8')
-        data = input_file.read()
+        text = input_file.read()
         input_file.close()
-        return data
+        return text
     except FileNotFoundError:
         print('File not found')
         sysexit()
