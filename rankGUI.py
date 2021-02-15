@@ -24,6 +24,7 @@ def setInputText(text):
     text_input.delete(1.0, tk.END)
     text_input.insert(1.0, text)
 
+# Command frame
 command_frame = tk.Frame(root)
 command_frame.pack(side = 'right')
 button1 = tk.Button(command_frame, text = 'Open Text File')
@@ -33,6 +34,7 @@ button2.pack(expand = tk.YES)
 button3 = tk.Button(command_frame, text = 'Set Text')
 button3.pack(expand = tk.YES)
 
+# Text frame
 text_frame = tk.Frame(root)
 text_frame.pack(side = 'left', fill = 'both', expand = True)
 scrollbar = tk.Scrollbar(text_frame)
@@ -42,6 +44,7 @@ text_input = tk.Text(text_frame, wrap = 'word',
 text_input.pack(side = 'left', fill = 'both', expand = True)
 scrollbar['command'] = text_input.yview
 
+# Set commands
 button2['command'] = (lambda: print(text_input.get(1.0, tk.END)))
 button3['command'] = (lambda: setInputText('new ătext'))
 
