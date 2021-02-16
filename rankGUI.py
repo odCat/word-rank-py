@@ -16,13 +16,25 @@
 
 import tkinter as tk
 
+import rankpy as rk
+
 root = tk.Tk()
 root.title('Word Rank Py')
 root.geometry('640x480')
 
+data = ''
+
 def setInputText(text):
     text_input.delete(1.0, tk.END)
     text_input.insert(1.0, text)
+
+def rank_from_input(text):
+    data = text
+    data = rk.remove_punctuation(data)
+    data = rk.text_to_list(data)
+    data = rk.word_frequency(data)
+    data = rk.make_printable(data)
+    print(data)
 
 # Command frame
 command_frame = tk.Frame(root)
@@ -45,7 +57,8 @@ text_input.pack(side = 'left', fill = 'both', expand = True)
 scrollbar['command'] = text_input.yview
 
 # Set commands
-button2['command'] = (lambda: print(text_input.get(1.0, tk.END)))
+button2['command'] = (lambda:
+        rank_from_input(text_input.get(1.0, tk.END)))
 button3['command'] = (lambda: setInputText('new ătext'))
 
 root.mainloop()
