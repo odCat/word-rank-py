@@ -99,4 +99,6 @@ if __name__ == '__main__':
 
 #TODO
 ## Print to output in chuncks
-## When redirecting the output to a file, it gets and unicode error
+## Make a method that rankes by using the other methods
+##  and checks if the input is empty or '\n'
+##  and test it if necessary
