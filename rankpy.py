@@ -85,6 +85,9 @@ if __name__ == '__main__':
     else:
         file_name = 'sample.txt'
     data = read_from_file(file_name)
+    if data == '':
+        print('The string is empty')
+        exit()
     data = remove_punctuation(data)
     data = text_to_list(data)
     data = word_frequency(data)

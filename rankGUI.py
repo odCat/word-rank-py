@@ -30,6 +30,9 @@ def setInputText(text):
 
 def rank_from_input(text):
     data = text
+    if data == '\n':
+        print('The string is empty')
+        exit()
     data = rk.remove_punctuation(data)
     data = rk.text_to_list(data)
     data = rk.word_frequency(data)
