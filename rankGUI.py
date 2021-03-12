@@ -28,8 +28,8 @@ def setInputText(text):
     text_input.insert(1.0, text)
 
 def rank_from_input(text):
-    data = text
-    if data == '\n':
+    data = rk.remove_empty_lines(text)
+    if data == '':
         print('The string is empty')
     else:
         data = rk.remove_punctuation(data)

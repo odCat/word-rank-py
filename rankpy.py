@@ -29,6 +29,7 @@ def read_from_file(file_name):
         sysexit()
 
 def remove_empty_lines(text):
+    text = sub(' +\n', '\n', text)
     text = sub('\n+', '\n', text)
     if text[0] == '\n':
         text = text[1:]

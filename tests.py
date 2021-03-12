@@ -85,7 +85,7 @@ class RankTests(unittest.TestCase):
         self.assertEqual(data, expected)
 
     def test_remove_empty_lines(self):
-        data = '\n\nline1\n\nline2\n'
+        data = '\n\nline1\n  \n\nline2\n'
         data = rankpy.remove_empty_lines(data)
         expected = 'line1\nline2\n'
         self.assertEqual(data, expected)
