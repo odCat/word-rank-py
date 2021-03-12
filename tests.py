@@ -74,7 +74,7 @@ class RankTests(unittest.TestCase):
                 }
         self.assertEqual(data, expected)
 
-    def test_make_printable(sefl):
+    def test_make_printable(self):
         data = {
                 "key2": 4,
                 "key3": 2,
@@ -82,6 +82,13 @@ class RankTests(unittest.TestCase):
                 }
         data = rankpy.make_printable(data)
         expected = ('key2: 4\nkey3: 2\nkey1: 1\n')
+        self.assertEqual(data, expected)
+
+    def test_remove_empty_lines(self):
+        data = '\n\nline1\n\nline2\n'
+        data = rankpy.remove_empty_lines(data)
+        expected = 'line1\nline2\n'
+        self.assertEqual(data, expected)
 
 if __name__ == '__main__':
     unittest.main()

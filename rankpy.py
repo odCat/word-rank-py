@@ -20,13 +20,19 @@ from re import sub
 
 def read_from_file(file_name):
     try:
-        input_file =  open(file_name, 'r', encoding='utf8')
+        input_file = open(file_name, 'r', encoding='utf8')
         text = input_file.read()
         input_file.close()
         return text
     except FileNotFoundError:
         print('File not found')
         sysexit()
+
+def remove_empty_lines(text):
+    text = sub('\n+', '\n', text)
+    if text[0] == '\n':
+        text = text[1:]
+    return text
 
 def remove_punctuation(text):
     punctuation = ',.?!\"\'‘’“”()[]{}<>\\/;:_+@#$%^&*~`=|'

@@ -15,7 +15,6 @@
 #   limitations under the License.
 
 import tkinter as tk
-
 import rankpy as rk
 
 root = tk.Tk()
