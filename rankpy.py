@@ -99,7 +99,7 @@ if __name__ == '__main__':
 
 #TODO
 ## Print to output in chuncks
-## Make a method that rankes by using the other methods
+## Make a method that ranks by using the other methods
 ##  and checks if the input is empty or '\n'
 ##  and test it if necessary
 ## Handle better strings with multiple newlines in a row
