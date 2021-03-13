@@ -17,6 +17,7 @@
 import unittest
 import rankpy
 
+
 class RankTests(unittest.TestCase):
 
     def test_read_from_file(self):
@@ -79,9 +80,9 @@ class RankTests(unittest.TestCase):
                 "key2": 4,
                 "key3": 2,
                 "key1": 1
-                }
+               }
         data = rankpy.make_printable(data)
-        expected = ('key2: 4\nkey3: 2\nkey1: 1\n')
+        expected = 'key2: 4\nkey3: 2\nkey1: 1\n'
         self.assertEqual(data, expected)
 
     def test_remove_empty_lines(self):
@@ -89,6 +90,7 @@ class RankTests(unittest.TestCase):
         data = rankpy.remove_empty_lines(data)
         expected = 'line1\nline2\n'
         self.assertEqual(data, expected)
+
 
 if __name__ == '__main__':
     unittest.main()

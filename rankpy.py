@@ -18,6 +18,7 @@ from sys import exit as sysexit
 from sys import argv
 from re import sub
 
+
 def read_from_file(file_name):
     try:
         input_file = open(file_name, 'r', encoding='utf8')
@@ -28,12 +29,14 @@ def read_from_file(file_name):
         print('File not found')
         sysexit()
 
+
 def remove_empty_lines(text):
     text = sub(' +\n', '\n', text)
     text = sub('\n+', '\n', text)
     if text[0] == '\n':
         text = text[1:]
     return text
+
 
 def remove_punctuation(text):
     punctuation = ',.?!\"\'‘’“”()[]{}<>\\/;:_+@#$%^&*~`=|'
@@ -47,6 +50,7 @@ def remove_punctuation(text):
 
     return text
 
+
 def text_to_list(text):
     text = remove_punctuation(text)
     text = text.replace('\n', ' ')
@@ -54,14 +58,16 @@ def text_to_list(text):
     text = sub(' +', ' ', text)
     return text.split(' ')
 
+
 def sort_dictionary(dictionary):
-    values = sorted(dictionary.values(), reverse = True)
+    values = sorted(dictionary.values(), reverse=True)
     result = {}
     for i in values:
         for j in dictionary.keys():
             if dictionary[j] == i:
                 result[j] = i
     return result
+
 
 def word_frequency(data):
     result = {}
@@ -72,19 +78,23 @@ def word_frequency(data):
             result[word] = 1
     return sort_dictionary(result)
 
+
 def make_printable(dictionary):
     result = ''
     for i in dictionary.keys():
         result += i + ': ' + str(dictionary[i]) + '\n'
     return result
 
+
 def print_to_file(file_name, data):
-    with open(file_name, 'w', encoding = 'utf-8') as out_file:
+    with open(file_name, 'w', encoding='utf-8') as out_file:
         out_file.write(data)
+
 
 def printutf8(data):
     utf8stdout = open(1, 'w', encoding='utf-8', closefd=False)
-    print(data, file = utf8stdout)
+    print(data, file=utf8stdout)
+
 
 if __name__ == '__main__':
     if len(argv) > 1:
@@ -104,9 +114,6 @@ if __name__ == '__main__':
     else:
         printutf8(data)
 
-#TODO
-## Print to output in chuncks
-## Make a method that ranks by using the other methods
-##  and checks if the input is empty or '\n'
-##  and test it if necessary
-## Handle better strings with multiple newlines in a row
+# TODO
+# Print to output in chunks
+# Make a method that ranks by using the other methods

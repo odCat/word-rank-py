@@ -17,15 +17,18 @@
 import tkinter as tk
 import rankpy as rk
 
+
 root = tk.Tk()
 root.title('Word Rank Py')
 root.geometry('640x480')
 
 data = ''
 
-def setInputText(text):
+
+def set_input_text(text):
     text_input.delete(1.0, tk.END)
     text_input.insert(1.0, text)
+
 
 def rank_from_input(text):
     data = rk.remove_empty_lines(text)
@@ -38,29 +41,34 @@ def rank_from_input(text):
         data = rk.make_printable(data)
         print(data)
 
+
 # Command frame
 command_frame = tk.Frame(root)
-command_frame.pack(side = 'right')
-button1 = tk.Button(command_frame, text = 'Open Text File')
-button1.pack(expand = tk.YES)
-button2 = tk.Button(command_frame, text = 'Get Text')
-button2.pack(expand = tk.YES)
-button3 = tk.Button(command_frame, text = 'Set Text')
-button3.pack(expand = tk.YES)
+command_frame.pack(side='right')
+button1 = tk.Button(command_frame, text='Open Text File')
+button1.pack(expand=tk.YES)
+button2 = tk.Button(command_frame, text='Get Text')
+button2.pack(expand=tk.YES)
+button3 = tk.Button(command_frame, text='Set Text')
+button3.pack(expand=tk.YES)
 
 # Text frame
 text_frame = tk.Frame(root)
-text_frame.pack(side = 'left', fill = 'both', expand = True)
+text_frame.pack(side='left', fill='both', expand=True)
 scrollbar = tk.Scrollbar(text_frame)
-scrollbar.pack(side = 'right', fill = 'y')
-text_input = tk.Text(text_frame, wrap = 'word',
-        yscrollcommand = scrollbar.set)
-text_input.pack(side = 'left', fill = 'both', expand = True)
+scrollbar.pack(side='right', fill='y')
+text_input = tk.Text(text_frame, wrap='word',
+                     yscrollcommand=scrollbar.set)
+text_input.pack(side='left', fill='both', expand=True)
 scrollbar['command'] = text_input.yview
 
 # Set commands
 button2['command'] = (lambda:
-        rank_from_input(text_input.get(1.0, tk.END)))
-button3['command'] = (lambda: setInputText('new ătext'))
+                      rank_from_input(text_input.get(1.0, tk.END)))
+button3['command'] = (lambda: set_input_text('new ătext'))
 
 root.mainloop()
+
+# TODO
+# Add more button with functionality
+#  clear, select all, copy etc
