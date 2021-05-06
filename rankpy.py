@@ -14,7 +14,7 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-from sys import exit as sysexit
+from sys import exit as sys_exit
 from sys import argv
 from re import sub
 
@@ -27,7 +27,7 @@ def read_from_file(file_name):
         return text
     except FileNotFoundError:
         print('File not found')
-        sysexit()
+        sys_exit()
 
 
 def remove_empty_lines(text):
@@ -40,7 +40,7 @@ def remove_empty_lines(text):
 
 def remove_punctuation(text):
     punctuation = ',.?!\"\'‘’“”()[]{}<>\\/;:_+@#$%^&*~`=|'
-            
+
     text = text.replace('-\n', '')
     text = text.replace('- ', ' ')
     text = text.replace(' -', ' ')
@@ -91,29 +91,46 @@ def print_to_file(file_name, data):
         out_file.write(data)
 
 
-def printutf8(data):
+def print_utf8(data):
     utf8stdout = open(1, 'w', encoding='utf-8', closefd=False)
     print(data, file=utf8stdout)
 
 
-if __name__ == '__main__':
+def select_file():
     if len(argv) > 1:
-        file_name = argv[1]
+        return argv[1]
     else:
-        file_name = 'sample.txt'
-    data = read_from_file(file_name)
-    if data == '':
+        return 'sample.txt'
+
+
+def exit_if_there_is_no_data(text_data):
+    if text_data == '':
         print('The string is empty')
-        exit()
-    data = remove_punctuation(data)
-    data = text_to_list(data)
-    data = word_frequency(data)
-    data = make_printable(data)
+        sys_exit()
+
+
+def print_to_output(text_data):
     if len(argv) == 3:
-        print_to_file(argv[2], data)
+        print_to_file(argv[2], text_data)
     else:
-        printutf8(data)
+        print_utf8(text_data)
+
+
+def process_data(text_data):
+    text_data = remove_punctuation(text_data)
+    text_data = text_to_list(text_data)
+    text_data = word_frequency(text_data)
+    return make_printable(text_data)
+
+
+if __name__ == '__main__':
+    file_name = select_file()
+    data = read_from_file(file_name)
+    exit_if_there_is_no_data(data)
+    data = process_data(data)
+    print_to_output(data)
 
 # TODO
 # Print to output in chunks
-# Make a method that ranks by using the other methods
+# Fix GUI
+# Make GUI use the new methods
